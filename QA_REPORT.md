@@ -1,13 +1,45 @@
 # QA Report
 
-## Automated coverage
+This document summarizes the automated and manual validation performed for the Executive Productivity Agent.
 
-tests/test_logic.py contains 15 assignment-critical assertions: vendor extraction, revision, deduplication and overdue status; expense completion; Meridian confirmation; Q3 revision and non-completion; Mumbai unclear ownership and Friday deadline; voice-note extraction; calendar correlation; grounded and unsupported Q&A; and no inferred owner.
+## Automated Coverage
 
-## Manual smoke tests
+`tests/test_logic.py` contains **15 assignment-critical assertions** covering:
 
-- Navigate every sidebar page.
-- Expand Vendor List and Mumbai Lease evidence.
+- Vendor List extraction
+- Deadline revision
+- Commitment deduplication
+- Overdue status
+- Expense report completion
+- Meridian call confirmation
+- Q3 Campaign Deck deadline revision
+- Q3 review non-completion handling
+- Mumbai lease unclear ownership
+- Mumbai Friday deadline
+- Voice-note commitment extraction
+- Calendar correlation
+- Grounded Q&A
+- Unsupported-question handling
+- Prevention of inferred ownership
+
+## Manual Smoke Tests
+
+The following application flows were manually checked:
+
+- Navigate through every sidebar page.
+- Expand Vendor List evidence.
+- Expand Mumbai Lease evidence.
 - Run all five Demo Mode scenarios.
-- Confirm Q3 is scheduled earlier today, not completed.
-- Confirm Expense Report is absent from open actions.
+- Confirm the Q3 Campaign Deck is scheduled earlier today and is **not marked completed** without evidence.
+- Confirm the Expense Report is completed and excluded from open actions.
+
+## Validation Principles
+
+The QA process specifically verifies that the agent:
+
+1. Uses only supplied Data Pack evidence.
+2. Preserves the latest explicit commitment.
+3. Deduplicates repeated commitment mentions.
+4. Does not treat missing evidence as completion.
+5. Does not infer ownership when the source is unclear.
+6. Produces consistent results across the dashboard, timeline, brief, and Q&A.
