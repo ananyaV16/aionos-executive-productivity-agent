@@ -67,6 +67,22 @@ The workspace supports grounded questions such as:
 
 Responses include supporting evidence and source information.
 
+
+## Application Views
+
+The Streamlit workspace includes:
+
+- **Executive Dashboard**
+- **Daily Action Brief**
+- **My Actions**
+- **Waiting on Others**
+- **Deadlines / Overdue**
+- **Unclear Ownership**
+- **Commitment Timeline**
+- **Calendar Context**
+- **Ask the Executive Workspace**
+- **Demo Mode**
+- **Sources & Method**
 ---
 
 ## 🧠 Architecture
