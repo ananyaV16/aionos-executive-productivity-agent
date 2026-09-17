@@ -1,28 +1,95 @@
 # AIONOS Executive Productivity Agent
 
-A local, deterministic executive productivity product for Arjun Malhotra, VP Sales. It turns supplied meeting, email, voice-note, and calendar facts into an evidence-grounded daily action brief.
+> An evidence-grounded AI productivity workspace that turns fragmented executive communications into clear actions, deadlines, ownership signals, and decision-ready briefs.
 
-## Features
+**Built for:** AIONOS Agentic AI Factory — Assignment 1  
+**User:** Arjun Malhotra, VP Sales  
+**Scenario:** Week of 21–25 September 2026
 
-- Premium Streamlit command center, daily brief, deadlines, calendar, timeline, traceability, and demo mode.
-- Deduplicated Vendor List with three supporting mentions.
-- Evidence-driven overdue, completed, confirmed, scheduled, and unclear-ownership states.
-- Grounded natural-language workspace queries and unsupported-question handling.
-- No API key, live integrations, or runtime LLM required.
+---
 
-## Run locally
+## Overview
 
-```powershell
-python -m pip install -r requirements.txt
-streamlit run app.py
-```
+Executives often receive commitments and follow-ups across meetings, emails, voice notes, and calendars. Important actions can become buried, deadlines can shift, and ownership can remain unclear.
 
-Run checks with `python -m pytest -q`.
+The **Executive Productivity Agent** consolidates these fragmented inputs into a single workspace that helps an executive answer:
 
-## Architecture
+- What do I need to do?
+- What is overdue?
+- What am I waiting on?
+- What changed?
+- Who owns this?
+- What needs my attention today?
+- What evidence supports this conclusion?
 
-`data_pack.py` holds Data-Pack-only facts; `services.py` supplies deterministic reasoning and Q&A; `app.py` is the UI. See architecture.md, DATA_LINEAGE.md, and assumptions.md.
+The system is designed around **evidence-first reasoning**: it uses only the supplied Data Pack, preserves source provenance, and avoids inventing ownership or completion status.
 
-## Limitations
+---
 
-This assignment build uses the fixed supplied Data Pack, not live integrations. A production version could add authenticated ingestion, review queues, audit controls, and optional retrieval while retaining evidence requirements.
+## ✨ Key Capabilities
+
+### Commitment Intelligence
+- Extracts executive commitments from meetings, emails, and voice notes
+- Identifies the latest commitment and deadline
+- Deduplicates repeated mentions of the same commitment
+- Tracks commitment evolution over time
+
+### Deadline Intelligence
+- Detects open and overdue commitments
+- Reconciles revised deadlines
+- Separates completed work from unresolved work
+- Connects commitments with relevant calendar events
+
+### Ownership Intelligence
+- Distinguishes **My Actions**, **Waiting on Others**, and **Unclear Ownership**
+- Never assigns an owner without supporting evidence
+- Explicitly flags unresolved ownership for follow-up
+
+### Evidence & Traceability
+Every important classification can be traced back to:
+- Source
+- Supporting evidence
+- Classification rationale
+- Commitment history
+
+### Executive Q&A
+The workspace supports grounded questions such as:
+
+> "What did I promise Raghav?"
+
+> "What's overdue?"
+
+> "Who owns the Mumbai lease?"
+
+> "What changed this week?"
+
+> "What needs action today?"
+
+Responses include supporting evidence and source information.
+
+---
+
+## 🧠 Architecture
+
+```text
+Input Sources
+     ↓
+Structured Ingestion
+     ↓
+Commitment Extraction
+     ↓
+Entity Resolution
+     ↓
+Deadline Normalization
+     ↓
+Deduplication
+     ↓
+Status Engine
+     ↓
+Ownership Classification
+     ↓
+Calendar Correlation
+     ↓
+Evidence & Provenance
+     ↓
+Executive Brief + Q&A
